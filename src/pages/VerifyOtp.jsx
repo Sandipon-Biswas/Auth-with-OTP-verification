@@ -19,8 +19,10 @@ export default function VerifyOtp() {
     try {
       const { data } = await API.post('/auth/verify-otp', { email, otp });
       setMsg(data.message);
-      alert('register successfull , Please login')
-      navigate('/login');
+      setMsg('Register successful, Please login');
+setTimeout(() => {
+  navigate('/login');
+}, 3000);  // ২ সেকেন্ড পর রিডাইরেক্ট করবে
     } catch (err) {
       setMsg(err.response?.data?.message || 'Error occurred');
     }
