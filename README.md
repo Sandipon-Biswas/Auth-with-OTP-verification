@@ -1,12 +1,36 @@
-# React + Vite
+# Authentication with OTP Verification
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple MERN stack authentication system with **Login**, **Register**, and **OTP Verification** features.  
+Users can sign up, receive an OTP for verification, log in securely, and resend the OTP if needed.
 
-Currently, two official plugins are available:
+## 🌐 Live Demo
+[Click here to view the live project](https://auth-with-otp-verification-1.onrender.com/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
+- **User Registration** – Create a new account with email and password.
+- **OTP Verification** – Secure email-based OTP verification after registration.
+- **Resend OTP** – Request a new OTP if the previous one expires or is lost.
+- **User Login** – Access your account after successful verification.
+- **Secure Authentication** – Passwords hashed for security.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+- **Frontend:** React.js, Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Others:** Nodemailer for sending OTP emails
+
+---
+
+## 📸 Screenshots
+*(Add your screenshots here if available)*
+
+---
+
+## 📌 How to Run Locally
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-link>
