@@ -22,7 +22,7 @@ export default function VerifyOtp() {
       
 setTimeout(() => {
   navigate('/login');
-   alert("Login successfull")
+   alert("Registation successfull, please login")
 }, 3000);  // ২ সেকেন্ড পর রিডাইরেক্ট করবে
     } catch (err) {
       setMsg(err.response?.data?.message || 'Error occurred');
