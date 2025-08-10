@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import API from '../services/api';
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Login({ setUser }) {
   const [form, setForm] = useState({ email: '', password: '' });
   const [msg, setMsg] = useState('');
+  const [loading, setLoading] = useState(false); // loading state যোগ করলাম
   const navigate = useNavigate();
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -13,14 +13,12 @@ export default function Login({ setUser }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMsg('');
+    setLoading(true);  // API কল শুরু হওয়ার আগে loading true করি
     try {
       const { data } = await API.post('/auth/login', form);
       setMsg(data.message);
 
-      // token localStorage এ রাখছি
       localStorage.setItem('token', data.token);
-      // ইউজারের নামও রাখছি (যেমন, লগইনের email থেকে বা response থেকে)
-      // backend থেকে ইউজারের নাম চাইলে modify করতে হবে backend code
       localStorage.setItem('userName', form.email);
 
       setUser(form.email);
@@ -28,6 +26,7 @@ export default function Login({ setUser }) {
     } catch (err) {
       setMsg(err.response?.data?.message || 'Error');
     }
+    setLoading(false); // API কল শেষ হলে loading false করি
   };
 
   return (
@@ -43,6 +42,7 @@ export default function Login({ setUser }) {
           onChange={handleChange}
           className="w-full p-2 border rounded"
           required
+          disabled={loading} // লোডিং হলে ইনপুট ডিসেবল করে দিতে পারেন
         />
         <input
           name="password"
@@ -52,12 +52,16 @@ export default function Login({ setUser }) {
           onChange={handleChange}
           className="w-full p-2 border rounded"
           required
+          disabled={loading}
         />
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+          disabled={loading} // লোডিং হলে বাটন ডিসেবল রাখবেন
+          className={`w-full py-2 rounded text-white ${
+            loading ? 'bg-gray-500 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
+          }`}
         >
-          Login
+          {loading ? 'Loading...' : 'Login'}
         </button>
       </form>
     </div>
