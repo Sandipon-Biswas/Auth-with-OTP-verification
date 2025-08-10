@@ -22,10 +22,12 @@ export default function VerifyOtp() {
       
 setTimeout(() => {
   navigate('/login');
-}, 4000);  // ২ সেকেন্ড পর রিডাইরেক্ট করবে
+   alert("Login successfull")
+}, 3000);  // ২ সেকেন্ড পর রিডাইরেক্ট করবে
     } catch (err) {
       setMsg(err.response?.data?.message || 'Error occurred');
     }
+   
     setLoadingVerify(false);
   };
 
