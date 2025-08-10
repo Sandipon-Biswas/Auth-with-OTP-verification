@@ -10,3 +10,4 @@ const {connect} = mongoose;
 }
 }
 export default connectToMongo;
+//mongodb+srv://itv:itv@cluster0.pxdacb6.mongodb.net/
