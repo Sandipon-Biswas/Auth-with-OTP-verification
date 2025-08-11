@@ -7,7 +7,7 @@ import authRoutes from "./routes/auth.js";
 
 const app = express();
 
-// ✅ Allow only your frontend URL
+// Allow only your frontend URL
 app.use(cors({
     origin: "https://auth-with-otp-verification-1.onrender.com", // Your frontend Render URL
     methods: ["GET", "POST", "PUT", "DELETE"],
